@@ -64,8 +64,6 @@ pagination_dir: page
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
 theme: jacman
-stylus:
-  compress: true
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
@@ -75,5 +73,5 @@ deploy:
    branch: master
 
 plugins:
-- hexo-generator-feed
-- hexo-generator-sitemap
+  - hexo-generator-feed
+  - hexo-generator-sitemap
