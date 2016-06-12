@@ -1,5 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="tags" content="">
-<meta name="date" content="2016-06-04 23:20:31">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="date" content="2016-06-04 23:20:31">
+<meta name="tags" content="">
 <meta name="mathjax" content="true"><style>body {
   width: 45em;
   border: 1px solid #ddd;
@@ -1016,109 +1016,52 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><style>/*github*/
-.codehilite {background-color:#fff;color:#333333;}
-.codehilite .hll {background-color:#ffffcc;}
-.codehilite .c{color:#999988;font-style:italic}
-.codehilite .err{color:#a61717;background-color:#e3d2d2}
-.codehilite .k{font-weight:bold}
-.codehilite .o{font-weight:bold}
-.codehilite .cm{color:#999988;font-style:italic}
-.codehilite .cp{color:#999999;font-weight:bold}
-.codehilite .c1{color:#999988;font-style:italic}
-.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
-.codehilite .gd{color:#000000;background-color:#ffdddd}
-.codehilite .ge{font-style:italic}
-.codehilite .gr{color:#aa0000}
-.codehilite .gh{color:#999999}
-.codehilite .gi{color:#000000;background-color:#ddffdd}
-.codehilite .go{color:#888888}
-.codehilite .gp{color:#555555}
-.codehilite .gs{font-weight:bold}
-.codehilite .gu{color:#800080;font-weight:bold}
-.codehilite .gt{color:#aa0000}
-.codehilite .kc{font-weight:bold}
-.codehilite .kd{font-weight:bold}
-.codehilite .kn{font-weight:bold}
-.codehilite .kp{font-weight:bold}
-.codehilite .kr{font-weight:bold}
-.codehilite .kt{color:#445588;font-weight:bold}
-.codehilite .m{color:#009999}
-.codehilite .s{color:#dd1144}
-.codehilite .n{color:#333333}
-.codehilite .na{color:teal}
-.codehilite .nb{color:#0086b3}
-.codehilite .nc{color:#445588;font-weight:bold}
-.codehilite .no{color:teal}
-.codehilite .ni{color:purple}
-.codehilite .ne{color:#990000;font-weight:bold}
-.codehilite .nf{color:#990000;font-weight:bold}
-.codehilite .nn{color:#555555}
-.codehilite .nt{color:navy}
-.codehilite .nv{color:teal}
-.codehilite .ow{font-weight:bold}
-.codehilite .w{color:#bbbbbb}
-.codehilite .mf{color:#009999}
-.codehilite .mh{color:#009999}
-.codehilite .mi{color:#009999}
-.codehilite .mo{color:#009999}
-.codehilite .sb{color:#dd1144}
-.codehilite .sc{color:#dd1144}
-.codehilite .sd{color:#dd1144}
-.codehilite .s2{color:#dd1144}
-.codehilite .se{color:#dd1144}
-.codehilite .sh{color:#dd1144}
-.codehilite .si{color:#dd1144}
-.codehilite .sx{color:#dd1144}
-.codehilite .sr{color:#009926}
-.codehilite .s1{color:#dd1144}
-.codehilite .ss{color:#990073}
-.codehilite .bp{color:#999999}
-.codehilite .vc{color:teal}
-.codehilite .vg{color:teal}
-.codehilite .vi{color:teal}
-.codehilite .il{color:#009999}
-.codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-MathJax.Hub.Config({
-  config: ["MMLorHTML.js"],
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX"],
-  tex2jax: {
-    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-    processEscapes: false
-  },
-  TeX: {
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
-    TagSide: "right",
-    TagIndent: ".8em",
-    MultLineWidth: "85%",
-    equationNumbers: {
-      autoNumber: "AMS",
-    },
-    unicode: {
-      fonts: "STIXGeneral,'Arial Unicode MS'"
-    }
-  },
-  showProcessingMessages: false
-});
-</script>
-<title>线性回归和梯度下降</title></head><body><article class="markdown-body"><ul>
+</style><title>线性回归和梯度下降</title></head><body><article class="markdown-body"><ul>
 <li>machine learing</li>
 <li>math</li>
 <li>algorithm</li>
 </ul>
 <hr />
-<p>找了工作之后好像好久没有更新了，很多东西都忘记了，刚好最近正在重新入门machine learning，就写一下最简单的线性回归，重新捡一下快忘记的numpy， matplotlib，　和latex．</p>
-<p>现在假设我们有ｍ个数据$x$，并且每个数据都有ｎ个特征，相应的这些数据所对应的结果为ｙ，也是ｍ个．我们希望能找到一组参数来对任意一个样本尽量准的预测其结果．而梯度下降法则是提供了一个有效的学习方法，从每次训练得到的反馈中修正参数直到收敛．</p>
-<p>那根据上面的定义，我们就能很明确在这个过程中有两件事很关键．</p>
+<p>找了工作之后好像好久没有更新了,很多东西都忘记了,刚好最近正在重新入门machine learning,就写一下最简单的线性回归,重新捡一下快忘记的numpy, matplotlib,　和latex.</p>
+<p>现在假设我们有$ｍ$个数据$x$,并且每个数据都有$ｎ$个特征,相应的这些数据所对应的结果为$ｙ$,也是$ｍ$个.我们希望能找到一组线性参数来对任意一个样本尽量准的预测其结果.这样的参数向量我们称为$\theta$,而我们希望用这样一个函数来预测$y$<br />
+$$y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \ldots + \theta_n x_n$$<br />
+或者用简洁的矩阵表示<br />
+$$y = \theta^Tx$$<br />
+而梯度下降法则是提供了一个有效的学习方法,从每次训练得到的反馈中修正参数直到收敛.</p>
+<p>那根据上面的定义,我们就能很明确在这个过程中有两件事很关键.</p>
 <p>一是如何度量预测的准不准</p>
 <p>二是如何根据每次的反馈修正参数</p>
 <p>度量预测</p>
-<p>通过ｔｈｅｔａ和ｘ，我们可以预测出对应的ｙ，然而这个预测出的ｙ和真实的ｙ肯定是有误差的，那么自然而然，我们在借用统计里的方法，可以定义这个准确程度为<br />
+<p>通过$\theta$和$x$,我们可以预测出对应的$y$,然而这个预测出的$ｙ$和真实的$ｙ$肯定是有误差的,那么自然而然,我们在借用统计里的方法,可以定义这个准确程度为<br />
 $$J(\theta) = \sum_{i=1}^m \left (h_{\theta}(x^{i}) - y^{(i)} \right )^2$$</p>
-<p>现在我们有了一个可以度量误差的方法，那么，我们的目标也就显而易见了，就是使这个误差函数最小．而如何使其最小则是梯度下降法的工作了．</p>
-<p>当我们得到一个函数，我们怎么能够知道往哪个方向走下一步能够最快的接近最小值呢？对高等数学熟悉的话一下子就能想到梯度的概念－－在函数上的任意一点，其导数的方向就是函数值变化最大的方向．那么我们可以通过求导来获得下一步的方向．</p>
-<p>$$\frac{}{}$$</p></article></body></html>
+<p>现在我们有了一个可以度量误差的方法,那么,我们的目标也就显而易见了,就是使这个误差函数最小.而如何使其最小则是梯度下降法的工作了.</p>
+<p>当我们得到一个函数,我们怎么能够知道往哪个方向走下一步能够最快的接近最小值呢？对高等数学熟悉的话一下子就能想到梯度的概念&mdash;在函数上的任意一点,其导数的方向就是函数值变化最大的方向.那么我们可以通过求导来获得下一步的方向.</p>
+<p>$$\begin{align}<br />
+\frac{\partial J(\theta)}{\partial \theta_i} &amp;=  \frac{\partial}{\partial \theta_i} \sum_{i=1}^m \left (h_{\theta}(x^{i}) - y^{(i)} \right )^2 \<br />
+&amp;=  2\sum_{i=1}^m \left ( (h_{\theta}(x^{i}) - y^{(i)}) \, \frac{\partial}{\partial \theta_i}(h_{\theta}(x^{i}) - y^{(i)}) \right ) \<br />
+&amp;= 2\sum_{i=1}^m \left( h_{\theta}(x^{i}) - y^{(i)}\right) x_i<br />
+\end{align}<br />
+$$<br />
+在很多参考书中,为了整洁美观,都会使$J(\theta)$前多加一个参数$\frac{1}{2}$,使得导数变成$\sum_{i=1}^m \left( h_{\theta}(x^{i}) - y^{(i)}\right) x_i$,我们随大流,也用这样的方法定义,不过其实都没有差啦.</p>
+<p>由此我们得到每一次的迭代方法<br />
+$$\theta_i := \theta_i - \alpha\sum_{i=1}^m \left( h_{\theta}(x^{i}) - y^{(i)}\right) x_i \tag{ for i=1,2 \ldots ,n }$$<br />
+如果我们用更简洁耳朵矩阵表示则是<br />
+$$\theta := \theta - \alpha\left( sum(\theta^T x - y)x\right)$$</p>
+<p>这里的$\alpha$是每次梯度下降的步长,步长如果选短了会下降的很慢,迭代很多次,二步长选长了则会出现在最优点附近徘徊甚至直接远离最优点.选好$\alpha$真是一门学问.</p>
+<p>通过这种方法迭代的梯度下降法称为批量梯度爱心将法,因为每一次迭代都需要所有的训练点参与计算.二还有另外一种增量梯度下降算法或者说最忌梯度下降算法则每一次只使用一个点来训练,他的迭代公式是<br />
+$$\theta := \theta - \alpha \left( \theta^T x^{(i)} - y{(i)} \right)x$$</p>
+<p>好的,下面我们就要上图了.</p>
+<p>pass</p>
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>最小二乘法的概率解释</h2>
+<p>我们在前面只用了一些特征来对这个模型进行剑魔，而在现实中相对所有的影响因素剑魔是不太可能的，所以在预测过程中肯定会有很多未捕捉或者说未参与建模的特征没有在函数中体现，我们可以利用一个误差项  ~  来统一的表示这个误差。<br />
+    那么我们的预测模型就可以这样写<br />
+    ~~~~<br />
+而现在我们就为了解释这个模型提出一个假设<br />
+    assumption 1  epsilon ~ N(0, sigma^2)</p>
+<p>为什么我们能够先验的认为这个误差的分布满足正态分布呢？首先，也是最重要的，时间表明这个方法对于大多数情况都描述的很好，更理论一些的要涉及到概率论的中心极限定理，如果有概率论基础的自然明白，没有的话可以直接视为正太分布是对随机误差的非常优秀的刻画。</p>
+<p>那么我们的x,y也满足正态分布</p>
+<p><del>~</del>~~~</p>
+<p>如此，我们就可以对  theta 进行参数估计，当当当，极大似然估计登场。我们用极大似然估计的方法给出 theta 的估计值。</p>
+<p>maxmize l(theta) = <del>~</del>~~~</p>
+<p>log(L(theta)) = `<del>~</del>~~~~</p>
+<p>至此，我们就得到在先前得到的描述误差的函数，表示这个误差描述函数不是凭空掉下的林妹妹~</p></article></body></html>
